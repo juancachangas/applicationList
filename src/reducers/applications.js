@@ -8,13 +8,13 @@ import {
 
 const initialState = {
   applicationsLoading: false,
-  applications: {},
+  applications: [],
   error: undefined,
   filterBy: [],
   sortBy: {},
 };
 
-export default (state = initialState, { type, payload, error }) => {
+export default (state = initialState, { type, payload = {}, error }) => {
   const reducer = {
     [APPLICATIONS_SET_FILTER]: {
       ...state,

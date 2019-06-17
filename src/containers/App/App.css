@@ -1,3 +1,5 @@
-.App-intro {
-  font-size: large;
+.tableView {
+  width: 80%;
+  margin: 2rem auto;
+  box-shadow: 0 5px 5px #ddd;
 }

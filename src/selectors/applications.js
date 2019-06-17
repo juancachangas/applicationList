@@ -3,6 +3,12 @@ import { createSelector } from "reselect";
 
 export const applicationsState = state => state.applications;
 
+export const applicationsLoading = createSelector(
+  applicationsState, applications => applications.applicationsLoading);
+
+export const error = createSelector(
+  applicationsState, applications => applications.error);
+  
 export const getSort = createSelector(
   applicationsState, applications => applications.sortBy);
 
@@ -11,7 +17,7 @@ export const getFilter = createSelector(
 
 export const applicationList = createSelector(
   applicationsState,
-  ({applications, filterBy, sortBy}) => {
+  ({applications = [], filterBy, sortBy}) => {
     
     const filteredList = applications.filter(item => {
       return filterBy.reduce((accumulator ,filter) => {
