@@ -17,12 +17,17 @@ export const getFilter = createSelector(
 
 export const applicationList = createSelector(
   applicationsState,
-  ({applications = [], filterBy, sortBy}) => {
+  ({applications = [], filterBy={}, sortBy}) => {
     
     const filteredList = applications.filter(item => {
-      return filterBy.reduce((accumulator ,filter) => {
+      return Object.values(filterBy).reduce((accumulator ,filter) => {
         const field = filter.field;
-        return accumulator && filter.criteria.includes(item[field])
+        const criteria = filter.criteria.toLowerCase()
+        const itemField = item[field].toLowerCase()
+        return accumulator && (
+          criteria.includes(itemField) ||
+          itemField.includes(criteria)
+        )
         
       }, true)
     })

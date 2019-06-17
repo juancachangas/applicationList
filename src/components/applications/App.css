@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .tableHeader{
   display: flex;
   align-items: stretch;
@@ -13,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 10px 2px;
   margin: 0 3px;
 }
@@ -36,6 +40,21 @@
   padding: 10px 10px;
   text-overflow: ellipsis;
 }
+.tableHeader .actions{
+  width: 3rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.tableHeader .actions__filter {
+  background: transparent;
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.cell:last-of-type{
+  text-transform: capitalize;
+}
 .row:nth-child(odd) {
   background: #edf4fa;
   transition: 0.1s all ease;
@@ -51,4 +70,43 @@
   font-size: 0.9rem;
   background: #039bf447;
   transition: 0.1s all ease;
+}
+.filterBox{
+  position: absolute;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  top: 50%;
+  right: 0;
+  opacity: 0;
+  transition: 0.3s opacity ease;
+  transition: 0.3s top ease;
+}
+.filterBox.active {
+  top: 75%;
+  right: 0;
+  opacity: 1;
+  transition: 0.3s opacity ease;
+  transition: 0.3s top ease;
+}
+.filterBox input{
+  border-radius: 5px;
+  padding: 5px;
+  min-width: 100%;
+  max-width: 100%;
+  display: block;
+  border: 1px solid #ddd;
+}
+.filterBox p {
+  margin: 0 0 5px;
+}
+.closeFilter {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  color: #ddd;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
 }

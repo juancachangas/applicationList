@@ -21,7 +21,7 @@ export class ApplicationTable extends Component {
     return (
       <div>
         <nav className='tableHeader'>
-          <Header field='name' fieldText='Name' {...orderProps}/>
+          <Header field='name' fieldText='Name' filterable {...orderProps}/>
           <Header field='email' fieldText='Email' {...orderProps}/>
           <Header field='birth_date' fieldText='Age' {...orderProps}/>
           <Header field='year_of_experience' fieldText='Years of experience' {...orderProps}/>

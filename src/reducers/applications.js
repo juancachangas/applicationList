@@ -10,38 +10,43 @@ const initialState = {
   applicationsLoading: false,
   applications: [],
   error: undefined,
-  filterBy: [],
+  filterBy: {},
   sortBy: {},
 };
 
-export default (state = initialState, { type, payload = {}, error }) => {
-  const reducer = {
-    [APPLICATIONS_SET_FILTER]: {
-      ...state,
-      filterBy: payload.filter,
-    },
-    [APPLICATIONS_SET_SORT]: {
-      ...state,
-      sortBy: payload.sort,
-    },
-    [APPLICATIONS_SET_REQUEST]: {
-      ...state,
-      applicationsLoading: true,
-    },
-    [APPLICATIONS_SET_REQUEST]: {
-      ...state,
-      applicationsLoading: true,
-    },
-    [APPLICATIONS_SET_ERROR]: {
-      ...state,
-      applicationsLoading: false,
-      error: error,
-    },
-    [APPLICATIONS_SET_SUCCESS]: {
-      ...state,
-      applicationsLoading: false,
-      applications: payload.applications,
+export default (state = initialState, { type, payload, error }) => {
+  switch(type){
+    case APPLICATIONS_SET_FILTER: 
+      return {
+        ...state,
+        filterBy: {
+          ...state.filterBy,
+        [payload.filter.field]: payload.filter
+        },
+      }
+    case APPLICATIONS_SET_SORT: 
+      return {
+        ...state,
+        sortBy: payload.sort,
+      }
+    case APPLICATIONS_SET_REQUEST: 
+      return {
+        ...state,
+        applicationsLoading: true,
+      }
+    case APPLICATIONS_SET_ERROR: 
+      return {
+        ...state,
+        applicationsLoading: false,
+        error: error,
+      }
+    case APPLICATIONS_SET_SUCCESS: 
+      return {
+        ...state,
+        applicationsLoading: false,
+        applications: payload.applications,
+      }
+    default:
+      return state;
     }
-  }
-  return reducer[type] || state
 };
