@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './headerCell';
-
-import './App.css';
+import logo from './assets/logo.svg';
+import './assets/App.css';
 
 export class ApplicationTable extends Component {
 
@@ -11,6 +11,9 @@ export class ApplicationTable extends Component {
       sort,
       sortAction,
       filterAction,
+      isLoading,
+      errorLoading,
+      requestApplications,
     } = this.props;
 
     const orderProps = {
@@ -41,6 +44,18 @@ export class ApplicationTable extends Component {
               <section className='cell'>{application.status}</section>
             </article>
           )}
+          { isLoading &&
+            <div className='loading-box'>
+              <img src={logo} className="loading-logo" alt="logo" />
+            </div>
+          }
+          {
+            errorLoading && 
+            <div className='errorMsg'>
+              Sorry, there was an error retrieving the applications <br />
+              <button onClick={requestApplications}>Retry</button>
+            </div>
+          }
         </main>
       </div>
     );

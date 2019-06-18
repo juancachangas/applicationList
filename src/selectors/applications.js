@@ -15,6 +15,9 @@ export const getSort = createSelector(
 export const getFilter = createSelector(
   applicationsState, applications => applications.filterBy);
 
+export const errorLoading = createSelector(
+  applicationsState, applications => applications.error);
+      
 export const applicationList = createSelector(
   applicationsState,
   ({applications = [], filterBy={}, sortBy}) => {

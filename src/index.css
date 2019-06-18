@@ -8,14 +8,14 @@ body {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.loading-logo {
+  animation: App-logo-spin infinite 1s linear;
   height: 80px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 175px;
   padding: 20px;
   color: white;
 }

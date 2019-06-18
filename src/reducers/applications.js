@@ -33,6 +33,7 @@ export default (state = initialState, { type, payload, error }) => {
       return {
         ...state,
         applicationsLoading: true,
+        error: null
       }
     case APPLICATIONS_SET_ERROR: 
       return {
@@ -43,6 +44,7 @@ export default (state = initialState, { type, payload, error }) => {
     case APPLICATIONS_SET_SUCCESS: 
       return {
         ...state,
+        error: null,
         applicationsLoading: false,
         applications: payload.applications,
       }
