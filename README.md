@@ -1,4 +1,4 @@
-# Personio applications
+## Applications
 
 Hi, this is my submission for personio test. This is an app to list a series of applications to different roles at personio. This list consumes an api(that can fail from time to time) and enables the user to sort by any field, and also to make some basic filtering on the columns
 
